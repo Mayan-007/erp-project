@@ -1,24 +1,56 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import Purchase from './components/Purchase';
+import Employee from './components/Employee';
+import Invoice from './components/Invoice';
+import Wholesaler from './components/Wholesaler';
+import Stock from './components/Stock';
+import NavBar from './components/NavBar';
 
-export default function App() {
-	return (
-		<div className='container'>
-			<div className="row d-flex justify-content-center pt-5">
-				<div className="col-6">
-					<h2 className='p-3'>Hello From App</h2>
-					<div className="card">
-						<div className="card-header">
-							Hello From Header
+export default class App extends Component {
+	render() {
+		return (
+			<BrowserRouter>
+				<div className='container-fluid'>
+					<div className='row flex-nowrap'>
+						<div className='col-2 px-0 bg-dark'>
+							<NavBar />
 						</div>
-						<div className="card-body">
-							Hello From Body
-						</div>
-						<div className="card-footer">
-							Hello From Footer
+						<div className='col'>
+							<div className='row d-flex justify-content-between bg-dark text-white'>
+								<div className='col-10'>
+									<h3 className='pt-2 text-center text-uppercase'>Raj Boot House</h3>
+								</div>
+								<div className='col-2'>
+									<div className='row d-flex justify-content-end'>
+										<div className='col-3'>
+											<i class="bi bi-person-circle fs-1" type="button"
+                                                data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                            <ul class="dropdown-menu">
+                                                <li>
+                                                    <Link class="dropdown-item" to="/">Logout</Link>
+                                                </li>
+                                            </ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<Routes>
+								{/* Route 1: Customer */}
+								<Route exact path="/purchase" element={<Purchase />} />
+								{/* Route 1: Employee */}
+								<Route exact path="/employee" element={<Employee />} />
+								{/* Route 1: Invoice */}
+								<Route exact path="/invoice" element={<Invoice />} />
+								{/* Route 1: Wholesaler */}
+								<Route exact path="/wholesaler" element={<Wholesaler />} />
+								{/* Route 1: Stock */}
+								<Route exact path="/stock" element={<Stock />} />
+							</Routes>
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-	)
+			</BrowserRouter>
+		)
+	}
 }
