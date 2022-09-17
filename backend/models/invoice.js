@@ -12,18 +12,6 @@ const InvoiceSchema = new Schema({
             quantity: {
                 type: Number,
                 required: [true, 'Quantity is required']
-            },
-            rate: {
-                type: Number,
-                required: [true, 'Rate is required']
-            },
-            cgst: {
-                type: Number,
-                required: [true, 'CGST is required']
-            },
-            sgst: {
-                type: Number,
-                required: [true, 'SGST is required']
             }
     }],
     customer_id: {
