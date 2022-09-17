@@ -6,7 +6,7 @@ export default class NavBar extends Component {
         return (
             <div class="text-white min-vh-100">
                 <div className='container pt-3'>
-                    <img src="images/logo.png" className='w-100' />
+                    <img src="images/logo.png" alt='logo' className='w-100' />
                 </div>
                 <div className='container pt-3'>
                     <div className='row'>
