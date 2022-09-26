@@ -4,7 +4,83 @@ export default class Wholesaler extends Component {
     render() {
         return (
             <div>
-                Hello Wholesaler
+                <div className="container">
+                    <h2 style={{marginTop: 10}}><center>Wholesaler details</center></h2>
+                    <div className='card'>
+
+                        <div className="card-body">
+                            <form>
+                                <div className='row'>
+                                    <div className='col-md-6'>
+                                        <div className="mb-1">
+                                            <label for="name" className="form-label">Name</label>
+                                            <input type="text" className="form-control"></input>
+                                        </div>
+                                        <div className="mb-1">
+                                            <label for="phone" className="form-label">Phone </label>
+                                            <input type="text" className="form-control"></input>
+                                        </div>
+                                        <div className="mb-1">
+                                            <label for="brand" className="form-label">Address</label>
+                                            <input type="text-area" className="form-control"></input>
+                                        </div>
+
+                                    </div>
+                                    <div className='col-6'>
+                                        <div className="mb-1">
+                                            <label for="quantity" className="form-label">Email id</label>
+                                            <input type="email" className="form-control"></input>
+                                        </div>
+                                        <div className="mb-1">
+                                            <label for="size" className="form-label">GST number</label>
+                                            <input type="text" className="form-control"></input>
+                                        </div>
+                                        <div className='mb-1'>
+                                            <button type="submit" class="btn btn-primary"style={{marginTop: 30}}>Submit</button>&nbsp;&nbsp;&nbsp;
+                                            <button type="reset" class="btn btn-primary"style={{marginTop: 30}}>Cancel</button>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div className="container">
+                    <h2 style={{marginTop: 10}}><center> Display Wholesaler details</center></h2>
+                    <div className='card'>
+                        <table class="card-table table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Email id</th>
+                                    <th scope="col">Gst no</th>
+                                    <th scope="col">Address</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td>@mdo</td>
+                                    <td>@mdo</td>
+                                    <td>@mdo</td>
+                                </tr>
+                                <tr>
+                                    <td>Jacob</td>
+                                    <td>Thornton</td>
+                                    <td>@fat</td>
+                                    <td>@mdo</td>
+                                    <td>@mdo</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div className="card-body">
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }
