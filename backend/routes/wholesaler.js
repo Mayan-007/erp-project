@@ -3,12 +3,15 @@ const router = express.Router();
 const { body, validationResult } = require('express-validator');
 const Wholesaler = require('../models/Wholesaler');
 
-router.post('/addWholesaler', [
-    body('wholesaler_name', 'Enter a valid name').isLength({ min: 3 }),
-    body('wholesaler_phone', 'Enter a valid phone number').isLength({ min: 10 }),
-    body('wholesaler_email', 'Enter a valid email').isEmail(),
-    body('wholesaler_address', 'Enter a valid address').isLength({ min: 3 }),
-    body('wholesaler_gstno', 'Enter a valid GST number').isLength({ min: 3 }),
+// @route   POST api/wholesaler/addwholesaler
+// @desc    Add a wholesaler to the database
+router.post('/addwholesaler', [
+    body('wholesaler_name', 'Please enter a valid name').isLength({ min: 3 }),
+    body('wholesaler_phone', 'Please enter a valid phone number').isMobilePhone(),
+    body('wholesaler_email', 'Please enter a valid email').isEmail(),
+    body('wholesaler_address', 'Please enter a valid address').isLength({ min: 3 }),
+    body('wholesaler_gstno', 'Please enter a valid GST number').matches("^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$"),
+    body('wholesaler_pincode', 'Please enter a valid pincode').isLength({ min: 6, max: 6 }),
 ], async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -17,9 +20,9 @@ router.post('/addWholesaler', [
 
     try{
         let wholesaler = await Wholesaler.findOne({ email: req.body.email });
-		if (wholesaler) {
-			return res.status(400).json({ error: "Sorry a user with this email already exists" })
-		}
+    	if (wholesaler) {
+    		return res.status(400).json({ error: "Sorry a user with this email already exists" })
+    	}
         wholesaler = new Wholesaler({
             name: req.body.wholesaler_name,
             contact_details: [{
@@ -30,9 +33,12 @@ router.post('/addWholesaler', [
             gstno: req.body.wholesaler_gstno,
             pincode: req.body.wholesaler_pincode
         });
+        wholesaler.save();
         res.send(wholesaler);
     }catch(error){
         console.error(error.message);
         res.status(500).send('Internal Server Error');
     }
 })
+
+module.exports = router;
