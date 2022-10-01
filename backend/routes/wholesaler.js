@@ -50,4 +50,21 @@ router.post('/addwholesaler', [
     }
 })
 
+// @route   GET api/wholesaler/getallwholesaler
+// @desc    Get all wholesalers from the database
+router.get('/getallwholesaler', async (req, res) => {
+    try{
+        let wholesalers = await Wholesaler.find();
+        let response = {
+            "status": "success",
+            "message": "All wholesalers fetched successfully",
+            "data": wholesalers
+        }
+        res.send(response);
+    }catch(error){
+        console.error(error.message);
+        res.status(500).send('Internal Server Error');
+    }
+})
+
 module.exports = router;
