@@ -1,6 +1,6 @@
-import React, { Component, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
-const Wholesaler = ({showAlert}) => {
+const Wholesaler = ({ showAlert }) => {
 
     const [name, setName] = useState('');
     const handleNameChange = (e) => {
@@ -59,6 +59,21 @@ const Wholesaler = ({showAlert}) => {
         setGstno('');
         setPincode('');
     }
+
+    const [wholesalers, setWholesaler] = useState([]);
+
+    const getAllWholesaler = async () => {
+        const url = 'http://localhost:4000/api/wholesaler/getallwholesaler';
+        const response = await fetch(url);
+        const result = await response.json();
+        console.log(result.data);
+        setWholesaler(result.data);
+    }
+
+    useEffect(() => {
+        getAllWholesaler();
+        // eslint-disable-next-line
+    }, [handleSubmit])
 
     return (
         <div>
@@ -156,25 +171,26 @@ const Wholesaler = ({showAlert}) => {
                                 <th scope="col">Name</th>
                                 <th scope="col">Phone</th>
                                 <th scope="col">Email id</th>
-                                <th scope="col">Gst no</th>
-                                <th scope="col">Address</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Mark</td>
-                                <td>Otto</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                            </tr>
-                            <tr>
-                                <td>Jacob</td>
-                                <td>Thornton</td>
-                                <td>@fat</td>
-                                <td>@mdo</td>
-                                <td>@mdo</td>
-                            </tr>
+                            {wholesalers.map((wholesaler) => (
+                                <tr key={wholesaler._id}>
+                                    <td>{wholesaler.name}</td>
+                                    <td>{wholesaler.contact_details[0].mobile}</td>
+                                    <td>{wholesaler.contact_details[0].email}</td>
+                                    <td>
+                                        <i className="bi bi-gear" type="button"
+                                            data-bs-toggle="dropdown" aria-expanded="false"></i>
+                                        <ul className="dropdown-menu">
+                                            <li>
+                                                <a className="dropdown-item">Edit</a>
+                                            </li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                            ))}
                         </tbody>
                     </table>
                     <div className="card-body">
