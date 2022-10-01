@@ -19,9 +19,13 @@ router.post('/addwholesaler', [
     }
 
     try{
-        let wholesaler = await Wholesaler.findOne({ email: req.body.email });
+        let wholesaler = await Wholesaler.findOne({ contact_details: { $elemMatch: { email: req.body.wholesaler_email } } });
     	if (wholesaler) {
-    		return res.status(400).json({ error: "Sorry a user with this email already exists" })
+            let response = {
+                "status": "warning",
+                "message": "Wholesaler already exists"
+            }
+    		return res.status(400).json(response);
     	}
         wholesaler = new Wholesaler({
             name: req.body.wholesaler_name,
@@ -34,7 +38,12 @@ router.post('/addwholesaler', [
             pincode: req.body.wholesaler_pincode
         });
         wholesaler.save();
-        res.send(wholesaler);
+        let response = {
+            "status": "success",
+            "message": "Wholesaler added successfully",
+            "data": wholesaler
+        }
+        res.send(response);
     }catch(error){
         console.error(error.message);
         res.status(500).send('Internal Server Error');

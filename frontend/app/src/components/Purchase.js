@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class Purchase extends Component {
-    render() {
-        return (
-            <div>
-                Hello Purchase
-            </div>
-        )
-    }
+const Purchase = () => {
+    return (
+        <div>
+            Hello Purchase
+        </div>
+    )
 }
+
+export default Purchase
