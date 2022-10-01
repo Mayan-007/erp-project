@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 export default class NavBar extends Component {
     render() {
         return (
-            <div class="text-white min-vh-100">
+            <div className="text-white min-vh-100">
                 <div className='container pt-3'>
                     <img src="images/logo.png" alt='logo' className='w-100' />
                 </div>

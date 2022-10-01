@@ -24,11 +24,11 @@ export default class App extends Component {
 								<div className='col-2'>
 									<div className='row d-flex justify-content-end'>
 										<div className='col-3'>
-											<i class="bi bi-person-circle fs-1" type="button"
+											<i className="bi bi-person-circle fs-1" type="button"
                                                 data-bs-toggle="dropdown" aria-expanded="false"></i>
-                                            <ul class="dropdown-menu">
+                                            <ul className="dropdown-menu">
                                                 <li>
-                                                    <Link class="dropdown-item" to="/">Logout</Link>
+                                                    <Link className="dropdown-item" to="/">Logout</Link>
                                                 </li>
                                             </ul>
 										</div>
@@ -38,13 +38,13 @@ export default class App extends Component {
 							<Routes>
 								{/* Route 1: Customer */}
 								<Route exact path="/purchase" element={<Purchase />} />
-								{/* Route 1: Employee */}
+								{/* Route 2: Employee */}
 								<Route exact path="/employee" element={<Employee />} />
-								{/* Route 1: Invoice */}
+								{/* Route 3: Invoice */}
 								<Route exact path="/invoice" element={<Invoice />} />
-								{/* Route 1: Wholesaler */}
+								{/* Route 4: Wholesaler */}
 								<Route exact path="/wholesaler" element={<Wholesaler />} />
-								{/* Route 1: Stock */}
+								{/* Route 5: Stock */}
 								<Route exact path="/stock" element={<Stock />} />
 							</Routes>
 						</div>
