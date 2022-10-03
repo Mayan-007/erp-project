@@ -1,6 +1,18 @@
+
+import React, { Component } from 'react'
+// jingalala hu hu hu
+export default class Wholesaler extends Component {
+    render() {
+        return (
+            <div>
+                <div className="container">
+                    <h2 style={{ marginTop: 10 }}><center>Wholesaler details</center></h2>
+                    <div className='card'>
+
 import React, { useEffect, useState } from 'react'
 
 const Wholesaler = ({ showAlert }) => {
+
 
     const [name, setName] = useState('');
     const handleNameChange = (e) => {
