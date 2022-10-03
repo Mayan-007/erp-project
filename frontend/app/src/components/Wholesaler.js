@@ -51,14 +51,18 @@ const Wholesaler = ({ showAlert }) => {
             body: JSON.stringify(data)
         });
         const result = await response.json();
-        showAlert(result.message, result.status);
-        setName('');
-        setPhone('');
-        setEmail('');
-        setAddress('');
-        setGstno('');
-        setPincode('');
-        getAllWholesaler();
+        if (result.status === 'success') {
+            showAlert(result.message, result.status);
+            setName('');
+            setPhone('');
+            setEmail('');
+            setAddress('');
+            setGstno('');
+            setPincode('');
+            getAllWholesaler();
+        } else {
+            showAlert(result.message, result.status);
+        }
     }
 
     const [wholesalers, setWholesaler] = useState([]);
