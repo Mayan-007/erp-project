@@ -53,12 +53,7 @@ const Wholesaler = ({ showAlert }) => {
         const result = await response.json();
         if (result.status === 'success') {
             showAlert(result.message, result.status);
-            setName('');
-            setPhone('');
-            setEmail('');
-            setAddress('');
-            setGstno('');
-            setPincode('');
+            cancelForm();
             getAllWholesaler();
         } else {
             showAlert(result.message, result.status);
