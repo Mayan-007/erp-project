@@ -1,9 +1,11 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export default class Invoice extends Component {
-    render() {
-        return(<div>
-            
-        </div>)
-    }
+const Invoice = () => {
+    return (
+        <div>
+            Hello Invoice
+        </div>
+    )
 }
+
+export default Invoice

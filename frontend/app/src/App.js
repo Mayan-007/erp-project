@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {useState} from 'react';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Purchase from './components/Purchase';
 import Employee from './components/Employee';
@@ -6,51 +6,67 @@ import Invoice from './components/Invoice';
 import Wholesaler from './components/Wholesaler';
 import Stock from './components/Stock';
 import NavBar from './components/NavBar';
+import Alert from './components/Alert';
 
-export default class App extends Component {
-	render() {
-		return (
-			<BrowserRouter>
-				<div className='container-fluid'>
-					<div className='row flex-nowrap'>
-						<div className='col-2 px-0 bg-dark'>
-							<NavBar />
-						</div>
-						<div className='col'>
-							<div className='row d-flex justify-content-between bg-dark text-white'>
-								<div className='col-10'>
-									<h3 className='pt-2 text-center text-uppercase'>Raj Boot House</h3>
-								</div>
-								<div className='col-2'>
-									<div className='row d-flex justify-content-end'>
-										<div className='col-3'>
-											<i className="bi bi-person-circle fs-1" type="button"
-                                                data-bs-toggle="dropdown" aria-expanded="false"></i>
-                                            <ul className="dropdown-menu">
-                                                <li>
-                                                    <Link className="dropdown-item" to="/">Logout</Link>
-                                                </li>
-                                            </ul>
-										</div>
+
+const App = () => {
+
+	const showAlert = (message, type) => {
+		setAlert({
+			message: message,
+			type: type
+		})
+		setTimeout(() => {
+			setAlert(null);
+		}, 1000)
+	}
+
+	const [alert, setAlert] = useState(null);
+
+	return (
+		<BrowserRouter>
+			<div className='container-fluid'>
+				<div className='row flex-nowrap'>
+					<div className='col-2 px-0 bg-dark'>
+						<NavBar />
+					</div>
+					<div className='col'>
+						<div className='row d-flex justify-content-between bg-dark text-white'>
+							<div className='col-10'>
+								<h3 className='pt-2 text-center text-uppercase'>Raj Boot House</h3>
+							</div>
+							<div className='col-2'>
+								<div className='row d-flex justify-content-end'>
+									<div className='col-3'>
+										<i className="bi bi-person-circle fs-1" type="button"
+											data-bs-toggle="dropdown" aria-expanded="false"></i>
+										<ul className="dropdown-menu">
+											<li>
+												<Link className="dropdown-item" to="/">Logout</Link>
+											</li>
+										</ul>
 									</div>
 								</div>
 							</div>
-							<Routes>
-								{/* Route 1: Customer */}
-								<Route exact path="/purchase" element={<Purchase />} />
-								{/* Route 2: Employee */}
-								<Route exact path="/employee" element={<Employee />} />
-								{/* Route 3: Invoice */}
-								<Route exact path="/invoice" element={<Invoice />} />
-								{/* Route 4: Wholesaler */}
-								<Route exact path="/wholesaler" element={<Wholesaler />} />
-								{/* Route 5: Stock */}
-								<Route exact path="/stock" element={<Stock />} />
-							</Routes>
 						</div>
+						<Alert alert={alert} />
+						<Routes>
+							{/* Route 1: Customer */}
+							<Route exact path="/purchase" element={<Purchase />} />
+							{/* Route 2: Employee */}
+							<Route exact path="/employee" element={<Employee />} />
+							{/* Route 3: Invoice */}
+							<Route exact path="/invoice" element={<Invoice />} />
+							{/* Route 4: Wholesaler */}
+							<Route exact path="/wholesaler" element={<Wholesaler showAlert={showAlert} />} />
+							{/* Route 5: Stock */}
+							<Route exact path="/stock" element={<Stock />} />
+						</Routes>
 					</div>
 				</div>
-			</BrowserRouter>
-		)
-	}
+			</div>
+		</BrowserRouter>
+	)
 }
+
+export default App
