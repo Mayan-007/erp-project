@@ -58,6 +58,7 @@ const Wholesaler = ({ showAlert }) => {
         setAddress('');
         setGstno('');
         setPincode('');
+        getAllWholesaler();
     }
 
     const [wholesalers, setWholesaler] = useState([]);
@@ -66,14 +67,22 @@ const Wholesaler = ({ showAlert }) => {
         const url = 'http://localhost:4000/api/wholesaler/getallwholesaler';
         const response = await fetch(url);
         const result = await response.json();
-        console.log(result.data);
         setWholesaler(result.data);
+    }
+
+    const cancelForm = () => {
+        setName('');
+        setPhone('');
+        setEmail('');
+        setAddress('');
+        setGstno('');
+        setPincode('');
     }
 
     useEffect(() => {
         getAllWholesaler();
         // eslint-disable-next-line
-    }, [handleSubmit])
+    }, [])
 
     return (
         <div>
@@ -154,7 +163,7 @@ const Wholesaler = ({ showAlert }) => {
                                     </div>
                                     <div className='mb-1 justify-content-end'>
                                         <button type="submit" className="btn btn-primary" style={{ marginTop: 30 }}>Submit</button>&nbsp;&nbsp;&nbsp;
-                                        <button type="reset" className="btn btn-primary" style={{ marginTop: 30 }}>Cancel</button>
+                                        <button type="reset" className="btn btn-primary" style={{ marginTop: 30 }} onClick={cancelForm}>Cancel</button>
                                     </div>
                                 </div>
                             </div>
@@ -185,7 +194,7 @@ const Wholesaler = ({ showAlert }) => {
                                             data-bs-toggle="dropdown" aria-expanded="false"></i>
                                         <ul className="dropdown-menu">
                                             <li>
-                                                <a className="dropdown-item">Edit</a>
+                                                <a className="dropdown-item" href='/'>Edit</a>
                                             </li>
                                         </ul>
                                     </td>
