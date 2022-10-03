@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+// jingalala hu hu hu
 export default class Wholesaler extends Component {
     render() {
         return (
