@@ -8,10 +8,7 @@ const ProductSchema = new Schema({
     ref: 'purchase',
     required: [true, 'Purchase ID is required']
     },
-    name: {
-        type: String,
-        required: [true, 'Name field is required']
-    },
+    products:[{
     article_no: {
         type: String,
         required: [true, 'Article number is required']
@@ -21,10 +18,12 @@ const ProductSchema = new Schema({
         required: [true, 'Size is required']
     },
     color: {
-        type: String
+        type: String,
+        required: [true, 'Color is required']
     },
     brand: {
-        type: String
+        type: String,
+        required: [true, 'Brand is required']
     },
     purchase_rate: {
         type: Number,
@@ -37,7 +36,7 @@ const ProductSchema = new Schema({
     purchase_quantity: {
         type: Number,
         required: [true, 'Purchase Quantity is required']
-    },
+    }}],
     date: {
         type: Date,
         required: [true, 'Date is required']
