@@ -4,10 +4,17 @@ const Schema = mongoose.Schema;
 // create student schema & model
 const InvoiceSchema = new Schema({
    products: [{
-         product_id: {
-            type: Schema.Types.ObjectId,
-            ref: 'product',
-            required: [true, 'Product ID is required']
+            brand: {
+                type: String,
+                required: [true, 'brand is required']
+            },
+            color:{
+                type:String,
+                required: [true, 'color is required']
+            },
+            size:{
+                type:Number,
+                required: [true, 'size is required']
             },
             quantity: {
                 type: Number,

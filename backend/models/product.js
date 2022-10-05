@@ -26,17 +26,21 @@ const ProductSchema = new Schema({
     brand: {
         type: String
     },
-    rate: {
+    purchase_rate: {
         type: Number,
         required: [true, 'RATE is required']
     },
-    cgst: {
+    selling_rate: {
         type: Number,
-        required: [true, 'CGST is required']
+        required: [true, 'SELLING RATE is required']
     },
-    sgst: {
+    purchase_quantity: {
         type: Number,
-        required: [true, 'SGST is required']
+        required: [true, 'Purchase Quantity is required']
+    },
+    date: {
+        type: Date,
+        required: [true, 'Date is required']
     }
 });
 

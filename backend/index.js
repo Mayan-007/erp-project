@@ -14,6 +14,8 @@ app.get('/', (req, res) => {
 })
 
 app.use('/api/wholesaler', require('./routes/wholesaler'))
+app.use('/api/employee', require('./routes/employee'))
+app.use('/api/purchase', require('./routes/purchase'))
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}!`);
