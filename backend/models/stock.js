@@ -3,10 +3,14 @@ const Schema = mongoose.Schema;
 
 // create student schema & model
 const StockSchema = new Schema({
-    product_id: {
-        type: Schema.Types.ObjectId,
+    article_no: {
+        type: String,
         ref: 'product',
-        required: [true, 'Product ID is required']
+        required: [true, 'Article No is required']
+    },
+    size: {
+        type: Number,
+        required: [true, 'Size is required']
     },
     quantity: {
         type: Number,

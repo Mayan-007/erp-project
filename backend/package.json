@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/Mayan-007/shoeRP---An-ERP-solution-for-Footwear-shop#readme",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.1",
     "express-validator": "^6.14.2",
     "mongoose": "^6.6.2"
