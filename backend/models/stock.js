@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 // create student schema & model
 const StockSchema = new Schema({
+    brand: {
+        type: String,
+        required: [true, 'Brand is required']
+    },
     article_no: {
         type: String,
         ref: 'product',
