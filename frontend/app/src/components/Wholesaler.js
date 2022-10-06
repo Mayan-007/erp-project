@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
-
+import { Col, Row, Form } from "react-bootstrap";
+// import TableScrollbar from 'react-table-scrollbar';
 const Wholesaler = ({ showAlert }) => {
 
     const [name, setName] = useState('');
@@ -86,13 +87,13 @@ const Wholesaler = ({ showAlert }) => {
     return (
         <div>
             <div className="container">
-                <h2 style={{ marginTop: 10 }}><center>Wholesaler details</center></h2>
+                <h2 style={{ }}><center>Wholesaler details</center></h2>
                 <div className='card'>
                     <div className="card-body">
                         <form onSubmit={handleSubmit}>
                             <div className='row'>
                                 <div className='col-md-6'>
-                                    <div className="mb-1">
+                                    {/* <div className="mb-1">
                                         <label htmlFor='wholesaler_name' className="form-label">Name</label>
                                         <input
                                             type="text"
@@ -124,10 +125,45 @@ const Wholesaler = ({ showAlert }) => {
                                             value={address}
                                             onChange={handleAddressChange}
                                         />
-                                    </div>
+                                    </div> */}
+                                     <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+                                <Form.Label column sm="2"htmlFor='wholesaler_name'>
+                                    Name
+                                </Form.Label>
+                                <Col sm="10">
+                                    <Form.Control type='text' name='wholesaler_name' id='wholesaler_name'placeholder="Name" 
+                                    value={name}
+                                    onChange={handleNameChange}/>
+                                </Col>
+                            </Form.Group>
+
+                            <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                                <Form.Label column sm="2" htmlFor='wholesaler_phone'>
+                                    Phone
+                                </Form.Label>
+                                <Col sm="10">
+                                    <Form.Control type="text" name='wholesaler_phone' id='wholesaler_phone' placeholder="Phone number" 
+                                    value={phone}
+                                    onChange={handlePhoneChange}/>
+                                </Col>
+                            </Form.Group>
+                            <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                                <Form.Label column sm="2"htmlFor='wholesaler_address'>
+                                    Address
+                                </Form.Label>
+                                <Col sm="10">
+                                    <Form.Control  type="text-area"
+                                            name='wholesaler_address'
+                                            id='wholesaler_address'
+                                            className="form-control"
+                                            placeholder='Address'
+                                            value={address}
+                                            onChange={handleAddressChange} />
+                                </Col>
+                            </Form.Group>
                                 </div>
                                 <div className='col-6'>
-                                    <div className="mb-1">
+                                    {/* <div className="mb-1">
                                         <label htmlFor='wholesaler_email' className="form-label">Email id</label>
                                         <input
                                             type="email"
@@ -159,10 +195,53 @@ const Wholesaler = ({ showAlert }) => {
                                             value={pincode}
                                             onChange={handlePincodeChange}
                                         />
-                                    </div>
-                                    <div className='mb-1 justify-content-end'>
-                                        <button type="submit" className="btn btn-primary" style={{ marginTop: 30 }}>Submit</button>&nbsp;&nbsp;&nbsp;
-                                        <button type="reset" className="btn btn-primary" style={{ marginTop: 30 }} onClick={cancelForm}>Cancel</button>
+                                    </div> */}
+                                       <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+                                <Form.Label column sm="2" htmlFor='wholesaler_email'>
+                                    Email
+                                </Form.Label>
+                                <Col sm="10">
+                                    <Form.Control type="email"
+                                            name='wholesaler_email'
+                                            id='wholesaler_email'
+                                            className="form-control"
+                                            placeholder='Email'
+                                            value={email}
+                                            onChange={handleEmailChange}/>
+                                </Col>
+                            </Form.Group>
+
+                            <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                                <Form.Label column sm="2"htmlFor='wholesaler_gstno'>
+                                    Gst
+                                </Form.Label>
+                                <Col sm="10">
+                                    <Form.Control    type="text"
+                                            name='wholesaler_gstno'
+                                            id='wholesaler_gstno'
+                                            className="form-control"
+                                            placeholder='Gst number'
+                                            value={gstno}
+                                            onChange={handleGstnoChange}/>
+                                </Col>
+                            </Form.Group>
+                            <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                                <Form.Label column sm="2"htmlFor='wholesaler_pincode'>
+                                    Pincode
+                                </Form.Label>
+                                <Col sm="10">
+                                    <Form.Control   type="text"
+                                            name='wholesaler_pincode'
+                                            id='wholesaler_pincode'
+                                            className="form-control"
+                                            placeholder='Pincode'
+                                            value={pincode}
+                                            onChange={handlePincodeChange} />
+                                </Col>
+                            </Form.Group>
+                                    <div className='mb-1 justify-content-end' style={{textalign:'right'}}>
+                                        <button type="submit" className="btn btn-primary" style={{marginLeft:'69%'}}>Submit</button>&nbsp;&nbsp;&nbsp;
+                                        <button type="reset" className="btn btn-primary"  onClick={cancelForm}>Cancel</button>
                                     </div>
                                 </div>
                             </div>
@@ -172,7 +251,8 @@ const Wholesaler = ({ showAlert }) => {
             </div>
             <div className="container">
                 <h2 style={{ marginTop: 10 }}><center> Display Wholesaler details</center></h2>
-                <div className='card'>
+                <div className='card' style={{height: '250px', overflowY: 'scroll'}} >
+                
                     <table className="card-table table">
                         <thead>
                             <tr>
@@ -182,7 +262,7 @@ const Wholesaler = ({ showAlert }) => {
                                 <th scope="col">Action</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody >
                             {wholesalers.map((wholesaler) => (
                                 <tr key={wholesaler._id}>
                                     <td>{wholesaler.name}</td>
@@ -201,6 +281,7 @@ const Wholesaler = ({ showAlert }) => {
                             ))}
                         </tbody>
                     </table>
+                  
                     <div className="card-body">
                     </div>
                 </div>

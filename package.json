@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/Mayan-007/shoeRP---An-ERP-solution-for-Footwear-shop/issues"
   },
-  "homepage": "https://github.com/Mayan-007/shoeRP---An-ERP-solution-for-Footwear-shop#readme"
+  "homepage": "https://github.com/Mayan-007/shoeRP---An-ERP-solution-for-Footwear-shop#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.2",
+    "react-bootstrap": "^2.5.0"
+  }
 }
