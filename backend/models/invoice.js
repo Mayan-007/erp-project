@@ -8,6 +8,10 @@ const InvoiceSchema = new Schema({
                 type: String,
                 required: [true, 'brand is required']
             },
+            article_no: {
+                type: String,
+                required: [true, 'article_no is required']
+            },
             color:{
                 type:String,
                 required: [true, 'color is required']
@@ -33,16 +37,6 @@ const InvoiceSchema = new Schema({
     amount: {
         type: Number,
         required: [true, 'Amount is required']
-    },
-    cheque_no: {
-        type: String
-    },
-    cheque_date: {
-        type: Date
-    },
-    payement_mode: {
-        type: String,
-        required: [true, 'Payement mode is required']
     }
     
 });
