@@ -17,10 +17,12 @@ const PurchaseSchema = new Schema({
         required: [true, 'Amount is required']
     },
     cheque_no: {
-        type: String
+        type: String,
+        default: null
     },
     cheque_date: {
-        type: Date
+        type: Date,
+        default: null
     },
     payement_mode: {
         type: String,
