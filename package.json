@@ -17,7 +17,11 @@
   },
   "homepage": "https://github.com/Mayan-007/shoeRP---An-ERP-solution-for-Footwear-shop#readme",
   "dependencies": {
+    "@emotion/react": "^11.10.4",
+    "@emotion/styled": "^11.10.4",
+    "@mui/material": "^5.10.8",
     "bootstrap": "^5.2.2",
+    "radio-buttons-react-native": "^1.0.4",
     "react-bootstrap": "^2.5.0"
   }
 }
