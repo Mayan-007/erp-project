@@ -68,6 +68,7 @@ const Wholesaler = ({ showAlert }) => {
         const url = 'http://localhost:4000/api/wholesaler/getallwholesaler';
         const response = await fetch(url);
         const result = await response.json();
+        console.log(result.data);
         setWholesaler(result.data);
     }
 
@@ -91,8 +92,12 @@ const Wholesaler = ({ showAlert }) => {
             selector: row => row.name,
         },
         {
-            name: 'mobile',
-            selector: row => row.contact_details.mobile,
+            name: 'Mobile_no',
+            selector: row => row.contact_details[0].mobile,
+        },
+        {
+            name: 'Email',
+            selector: row => row.contact_details[0].email,
         },
         {
             name: 'GST No',
@@ -110,6 +115,7 @@ const Wholesaler = ({ showAlert }) => {
     const filteredWholesaler = wholesalers.filter(wholesaler => {
         return wholesaler.name.toLowerCase().includes(search.toLowerCase());
     })
+
     return (
         <div>
             <div className="container">
@@ -225,6 +231,7 @@ const Wholesaler = ({ showAlert }) => {
                             data={filteredWholesaler}
                             highlightOnHover
                             pagination
+                            pointerOnHover
                         />
                     </div>
                 </div>

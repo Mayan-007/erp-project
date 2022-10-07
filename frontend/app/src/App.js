@@ -54,7 +54,7 @@ const App = () => {
 							{/* Route 1: Customer */}
 							<Route exact path="/purchase" element={<Purchase />} />
 							{/* Route 2: Employee */}
-							<Route exact path="/employee" element={<Employee />} />
+							<Route exact path="/employee" element={<Employee showAlert={showAlert} />} />
 							{/* Route 3: Invoice */}
 							<Route exact path="/invoice" element={<Invoice />} />
 							{/* Route 4: Wholesaler */}

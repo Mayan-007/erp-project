@@ -3,8 +3,8 @@ const router = express.Router();
 const { body, validationResult } = require('express-validator');
 const Employee = require('../models/Employee');
 
-// @route   POST api/wholesaler/addwholesaler
-// @desc    Add a wholesaler to the database
+// @route   POST api/employee/addemployee
+// @desc    Add a emplooyee to the database
 router.post('/addemployee', [
     body('employee_name', 'Please enter a valid name').isLength({ min: 3 }),
     body('employee_phone', 'Please enter a valid phone number').isMobilePhone(),
@@ -25,7 +25,7 @@ router.post('/addemployee', [
                 "status": "warning",
                 "message": "employee already exists"
             }
-    		return res.status(400).json(response);
+    		return res.json(response);
     	}
         employee = new Employee({
             name: req.body.employee_name,
@@ -47,8 +47,8 @@ router.post('/addemployee', [
     }
 })
 
-// @route   GET api/wholesaler/getallwholesaler
-// @desc    Get all wholesalers from the database
+// @route   GET api/emplooyee/getallemplooyee
+// @desc    Get all emplooyees from the database
 router.get('/getallemployee', async (req, res) => {
     try{
         let employees = await Employee.find();
