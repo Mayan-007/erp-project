@@ -10,10 +10,6 @@ const CustomerSchema = new Schema({
     mobile: {
         type: Number,
         require: [true, 'Mobile number is required']
-    },
-    date: {
-        type: Date,
-        require: [true, 'Date is required']
     }
 });
 
