@@ -25,7 +25,7 @@ router.post('/addwholesaler', [
                 "status": "warning",
                 "message": "Wholesaler already exists"
             }
-    		return res.status(400).json(response);
+    		return res.json(response);
     	}
         wholesaler = new Wholesaler({
             name: req.body.wholesaler_name,

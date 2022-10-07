@@ -57,7 +57,7 @@ const Wholesaler = ({ showAlert }) => {
             showAlert(result.message, result.status);
             cancelForm();
             getAllWholesaler();
-        } else {
+        } else if (result.status === 'warning') {
             showAlert(result.message, result.status);
         }
     }
@@ -91,6 +91,10 @@ const Wholesaler = ({ showAlert }) => {
             selector: row => row.name,
         },
         {
+            name: 'mobile',
+            selector: row => row.contact_details.mobile,
+        },
+        {
             name: 'GST No',
             selector: row => row.gstno,
         },
@@ -106,9 +110,6 @@ const Wholesaler = ({ showAlert }) => {
     const filteredWholesaler = wholesalers.filter(wholesaler => {
         return wholesaler.name.toLowerCase().includes(search.toLowerCase());
     })
-
-    console.log(wholesalers);
-
     return (
         <div>
             <div className="container">
@@ -118,7 +119,7 @@ const Wholesaler = ({ showAlert }) => {
                         <form onSubmit={handleSubmit}>
                             <div className='row'>
                                 <div className='col-md-6'>
-                                    <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+                                    <Form.Group as={Row} className="mb-3">
                                         <Form.Label column sm="2" htmlFor='wholesaler_name'>
                                             Name
                                         </Form.Label>
@@ -129,7 +130,7 @@ const Wholesaler = ({ showAlert }) => {
                                         </Col>
                                     </Form.Group>
 
-                                    <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                                    <Form.Group as={Row} className="mb-3">
                                         <Form.Label column sm="2" htmlFor='wholesaler_phone'>
                                             Phone
                                         </Form.Label>
@@ -139,7 +140,7 @@ const Wholesaler = ({ showAlert }) => {
                                                 onChange={handlePhoneChange} />
                                         </Col>
                                     </Form.Group>
-                                    <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                                    <Form.Group as={Row} className="mb-3">
                                         <Form.Label column sm="2" htmlFor='wholesaler_address'>
                                             Address
                                         </Form.Label>
@@ -155,7 +156,7 @@ const Wholesaler = ({ showAlert }) => {
                                     </Form.Group>
                                 </div>
                                 <div className='col-6'>
-                                    <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+                                    <Form.Group as={Row} className="mb-3">
                                         <Form.Label column sm="2" htmlFor='wholesaler_email'>
                                             Email
                                         </Form.Label>
@@ -170,7 +171,7 @@ const Wholesaler = ({ showAlert }) => {
                                         </Col>
                                     </Form.Group>
 
-                                    <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                                    <Form.Group as={Row} className="mb-3">
                                         <Form.Label column sm="2" htmlFor='wholesaler_gstno'>
                                             Gst
                                         </Form.Label>
@@ -184,7 +185,7 @@ const Wholesaler = ({ showAlert }) => {
                                                 onChange={handleGstnoChange} />
                                         </Col>
                                     </Form.Group>
-                                    <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                                    <Form.Group as={Row} className="mb-3">
                                         <Form.Label column sm="2" htmlFor='wholesaler_pincode'>
                                             Pincode
                                         </Form.Label>
@@ -210,13 +211,15 @@ const Wholesaler = ({ showAlert }) => {
             </div>
             <div className="container">
                 <h2 style={{ marginTop: 10 }}><center> Display Wholesaler details</center></h2>
-                <div className='card' style={{ height: '300px', overflowY: 'scroll' }} >
-                    <div className="card-body">
+                <div className='card'>
+                    <div className='card-header'>
                         <div className='row'>
                             <div className='col-4 offset-8'>
                                 <input type="text" className="form-control" placeholder="Search by wholesaler name" onChange={handleSearch} />
                             </div>
                         </div>
+                    </div>
+                    <div className="card-body" style={{ height: '300px', overflowY: 'scroll' }} >
                         <DataTable
                             columns={columns}
                             data={filteredWholesaler}
