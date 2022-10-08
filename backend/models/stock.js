@@ -23,10 +23,6 @@ const StockSchema = new Schema({
     date: {
         type: Date,
         required: [true, 'Date is required']
-    },
-    selling_rate: {
-        type: Number,
-        required: [true, 'Selling Rate is required']
     }
 });
 

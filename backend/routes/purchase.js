@@ -67,7 +67,7 @@ router.post('/addpurchase',[
                     size: req.body.products[i].size,
                     quantity: req.body.products[i].purchase_quantity,
                     date: req.body.purchase_date,
-                    selling_rate: req.body.products[i].selling_rate,
+                    
                 });
                 stock.save();
                 
@@ -75,7 +75,6 @@ router.post('/addpurchase',[
             else{
             
                 stock.quantity = stock.quantity + req.body.products[i].purchase_quantity;
-                stock.selling_rate = req.body.products[i].selling_rate;
                 stock.save();
             }
         }

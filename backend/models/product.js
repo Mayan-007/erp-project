@@ -29,10 +29,6 @@ const ProductSchema = new Schema({
         type: Number,
         required: [true, 'RATE is required']
     },
-    selling_rate: {
-        type: Number,
-        required: [true, 'SELLING RATE is required']
-    },
     purchase_quantity: {
         type: Number,
         required: [true, 'Purchase Quantity is required']
