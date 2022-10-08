@@ -1,15 +1,18 @@
 import React from 'react'
 import { Col, Row, Form } from "react-bootstrap";
-import Radio from '@mui/material/Radio';
-import RadioGroup from '@mui/material/RadioGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
+import Dropdown from 'react-bootstrap/Dropdown';
+
+// import Radio from '@mui/material/Radio';
+// import RadioGroup from '@mui/material/RadioGroup';
+// import FormControlLabel from '@mui/material/FormControlLabel';
 // import FormControl from '@mui/material/FormControl';
-import FormLabel from '@mui/material/FormLabel';
+// import FormLabel from '@mui/material/FormLabel';
 // import { appBarClasses } from '@mui/material';
 const styles = {
     box: {
         marginTop: '3%',
     }
+    
 }
 const Purchase = () => {
     return (
@@ -22,16 +25,26 @@ const Purchase = () => {
 
                             <div className='row'>
                                 <div className='col-md-4'>
-                                    <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+                                    <Form.Group as={Row} className="mb-3">
                                         <Form.Label column sm="6">
                                             Wholesaler name
                                         </Form.Label>
+                                        <Dropdown>
+      <Dropdown.Toggle variant="secondary" id="dropdown-basic" style={{width:'80%'}}>
+        Select
+      </Dropdown.Toggle>
 
-                                        <select >
+      <Dropdown.Menu style={{width:'80%'}}>
+        <Dropdown.Item href="#/action-2">Shail</Dropdown.Item>
+        <Dropdown.Item href="#/action-2">Dhruv</Dropdown.Item>
+        <Dropdown.Item href="#/action-3">Kalpit</Dropdown.Item>
+      </Dropdown.Menu>
+    </Dropdown>
+                                        {/* <select >
                                             <option value="shail">shail</option>
                                             <option value="mayan">mayan</option>
                                             <option value="dhruv">Dhruv</option>
-                                        </select>
+                                        </select> */}
 
 
                                     </Form.Group>
@@ -39,8 +52,12 @@ const Purchase = () => {
                                 <div className='col-md-8 '>
                                     <div className='row'>
                                         <div className='col-md-4'>
-                                            <FormLabel id="demo-row-radio-buttons-group-label">Mode</FormLabel>
-                                            <RadioGroup
+                                        <Form.Group as={Row}>
+                                                <Form.Label >
+                                                    Mode
+                                                    </Form.Label>
+                                            {/* <FormLabel id="demo-row-radio-buttons-group-label">Mode</FormLabel> */}
+                                            {/* <RadioGroup
                                                 row
                                                 aria-labelledby="demo-row-radio-buttons-group-label"
                                                 name="row-radio-buttons-group"
@@ -48,10 +65,30 @@ const Purchase = () => {
                                                 <FormControlLabel value="Cash" control={<Radio />} label="Cash" />
                                                 <FormControlLabel value="Cheque" control={<Radio />} label="Cheque" />
 
-                                            </RadioGroup>
+                                            </RadioGroup> */}
+                                            {[ 'radio'].map((type) => (
+                                                <div key={`inline-${type}`} className="mb-3">
+                                                    <Form.Check
+                                                        inline
+                                                        label="Cash"
+                                                        name="mode"
+                                                        type={type}
+                                                        id={`inline-${type}-Cash`}
+                                                    />
+                                                    <Form.Check
+                                                        inline
+                                                        label="Cheque"
+                                                        name="mode"
+                                                        type={type}
+                                                        id={`inline-${type}-Cheque`}
+                                                    />
+                                                   
+                                                </div>
+                                            ))}
+                                        </Form.Group>
                                         </div>
                                         <div className='col-md-8'>
-                                            <Form.Group as={Row} controlId="formPlaintextEmail">
+                                            <Form.Group as={Row}>
                                                 <Form.Label >
                                                     Cheque number
                                                 </Form.Label>
@@ -78,7 +115,7 @@ const Purchase = () => {
                             <div className='card-body'>
                                 <div className='row'>
                                     <div className='col-md-6'>
-                                        <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+                                        <Form.Group as={Row} className="mb-3">
                                             <Form.Label column sm="2" htmlFor='brand'>
                                                 Brand
                                             </Form.Label>
@@ -88,7 +125,7 @@ const Purchase = () => {
                                             </Col>
                                         </Form.Group>
 
-                                        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                                        <Form.Group as={Row} className="mb-3" >
                                             <Form.Label column sm="2" htmlFor='size'>
                                                 Size
                                             </Form.Label>
@@ -97,7 +134,7 @@ const Purchase = () => {
                                                 />
                                             </Col>
                                         </Form.Group>
-                                        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                                        <Form.Group as={Row} className="mb-3" >
                                             <Form.Label column sm="2" htmlFor='quantity'>
                                                 Quantity
                                             </Form.Label>
@@ -112,7 +149,7 @@ const Purchase = () => {
                                         </Form.Group>
                                     </div>
                                     <div className='col-md-6'>
-                                        <Form.Group as={Row} className="mb-3" controlId="formPlaintextEmail">
+                                        <Form.Group as={Row} className="mb-3">
                                             <Form.Label column sm="3" htmlFor='article_number'>
                                                 Article number
                                             </Form.Label>
@@ -122,7 +159,7 @@ const Purchase = () => {
                                             </Col>
                                         </Form.Group>
 
-                                        <Form.Group as={Row} className="mb-4" controlId="formPlaintextPassword">
+                                        <Form.Group as={Row} className="mb-4" >
                                             <Form.Label column sm="3" htmlFor='purchase_price'>
                                                 Purchase Price
                                             </Form.Label>
@@ -131,7 +168,7 @@ const Purchase = () => {
                                                 />
                                             </Col>
                                         </Form.Group>
-                                        <Form.Group as={Row} className="mb-3" controlId="formPlaintextPassword">
+                                        <Form.Group as={Row} className="mb-3" >
                                             <Form.Label column sm="3" htmlFor='selling_price'>
                                                 Selling Price
                                             </Form.Label>
