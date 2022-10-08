@@ -34,7 +34,7 @@ router.post('/addemployee', [
             salary: req.body.employee_salary,
             joining_date: req.body.employee_joining_date
         });
-        employee.save();
+        await employee.save();
         let response = {
             "status": "success",
             "message": "employee added successfully",

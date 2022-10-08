@@ -13,7 +13,7 @@ router.post('/addpurchase',[
     body('wholesaler_id', 'Please enter a valid wholesaler id').isString(),
     body('purchase_amount', 'Please enter a valid amount').isNumeric(),
     body('products', 'Please enter a valid product').isArray(),
-    body('payment_mode', 'Please enter a valid payment mode').isString(),
+    body('payment_mode', 'Please enter a valid payment mode').isString()
 ],  async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -35,7 +35,7 @@ router.post('/addpurchase',[
             cheque_date: req.body.cheque_date,
             payement_mode:req.body.payment_mode
         });
-        purchase.save();
+        await purchase.save();
         let response = {
             "status": "success",
             "message": "purchase added successfully",
@@ -45,10 +45,9 @@ router.post('/addpurchase',[
          let product = null;
             product = new Product({
             purchase_id: response.data._id,
-            date: req.body.purchase_date,
             products: req.body.products
         });
-        product.save();
+        await product.save();
         console.log(product);
  
         for(let i=0;i<req.body.products.length;i++){
@@ -58,17 +57,17 @@ router.post('/addpurchase',[
                     brand: req.body.products[i].brand,
                     article_no: req.body.products[i].article_no,
                     size: req.body.products[i].size,
-                    quantity: req.body.products[i].purchase_quantity,
-                    date: req.body.purchase_date,
+                    quantity: req.body.products[i].purchase_quantity
+                    
                     
                 });
-                stock.save();
+                await stock.save();
                 
             }
             else{
             
                 stock.quantity = stock.quantity + req.body.products[i].purchase_quantity;
-                stock.save();
+                await stock.save();
             }
         }
         let response1 = {

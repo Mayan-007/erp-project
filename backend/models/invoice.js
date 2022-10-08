@@ -12,10 +12,6 @@ const InvoiceSchema = new Schema({
                 type: String,
                 required: [true, 'article_no is required']
             },
-            color:{
-                type:String,
-                required: [true, 'color is required']
-            },
             size:{
                 type:Number,
                 required: [true, 'size is required']
@@ -23,6 +19,10 @@ const InvoiceSchema = new Schema({
             quantity: {
                 type: Number,
                 required: [true, 'Quantity is required']
+            },
+            rate: {
+                type: Number,
+                required: [true, 'Rate is required']
             }
     }],
     customer_id: {
