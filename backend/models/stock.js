@@ -22,7 +22,7 @@ const StockSchema = new Schema({
     },
     date: {
         type: Date,
-        required: [true, 'Date is required']
+        required: Date.now
     }
 });
 

@@ -96,12 +96,6 @@ const Purchase = ({ showAlert }) => {
         setPurchaseRate(e.target.value);
     }
 
-    const [sellingRate, setSellingRate] = useState('');
-
-    const handleSellingRateChange = (e) => {
-        setSellingRate(e.target.value);
-    }
-
     const [articleNo, setArticleNo] = useState('');
 
     const handleArticleNoChange = (e) => {
@@ -114,11 +108,9 @@ const Purchase = ({ showAlert }) => {
 
     const handleAddPurchase = (e) => {
         e.preventDefault();
-        if (brand === '' || size === '' || quantity === '' || purchaseRate === '' || sellingRate === '' || articleNo === '') {
+        if (brand === '' || size === '' || quantity === '' || purchaseRate === '' || articleNo === '') {
             showAlert('Please fill all the fields', 'danger');
         } else {
-            setTotalAmount(totalAmount + quantity * purchaseRate);
-            setTotalQuantity(totalQuantity + quantity);
             console.log(totalAmount);
             // data stored to session
             if (sessionStorage.getItem('purchase') === null) {
@@ -130,7 +122,6 @@ const Purchase = ({ showAlert }) => {
                 size: size,
                 brand: brand,
                 purchase_rate: purchaseRate,
-                selling_rate: sellingRate,
                 purchase_quantity: quantity
             });
             sessionStorage.setItem('purchase', JSON.stringify(purchase));
@@ -138,20 +129,18 @@ const Purchase = ({ showAlert }) => {
         }
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (wholesalerId === '' || mode === '' || chequeNo === '' || chequeDate === '') {
-            showAlert('Please fill all the fields', 'danger');
+    const handleSubmit = () => {
+        if (wholesalerId === '' || mode === '') {
+            showAlert('Please fill all the wholesaler details', 'danger');
         } else {
             let purchase = JSON.parse(sessionStorage.getItem('purchase'));
             let purchaseData = {
                 wholesaler_id: wholesalerId,
                 purchase_amount: totalAmount,
-                mode: mode,
-                cheque_no: chequeNo,
-                cheque_date: chequeDate,
-                total_quantity: totalQuantity,
-                purchase: purchase
+                products: purchase,
+                cheque_no: chequeNo === '' ? null : chequeNo,
+                cheque_date: chequeDate === '' ? null : chequeDate,
+                payment_mode: mode
             }
             fetch('http://localhost:4000/api/purchase/addpurchase', {
                 method: 'POST',
@@ -178,7 +167,16 @@ const Purchase = ({ showAlert }) => {
     const handleTempDetailsList = () => {
         let purchase = JSON.parse(sessionStorage.getItem('purchase'));
         setTempDetails(purchase);
-        console.log(purchase)
+        if (purchase !== null) {
+            let total = 0;
+            let totalQuantity = 0;
+            purchase.forEach((purchase) => {
+                total += purchase.purchase_rate * purchase.purchase_quantity;
+                totalQuantity += parseInt(purchase.purchase_quantity);
+            })
+            setTotalAmount(total);
+            setTotalQuantity(totalQuantity);
+        }
     }
 
     useEffect(() => {
@@ -373,21 +371,6 @@ const Purchase = ({ showAlert }) => {
                                                 />
                                             </Col>
                                         </Form.Group>
-                                        <Form.Group as={Row} className="mb-3" >
-                                            <Form.Label column sm="3" htmlFor='selling_price'>
-                                                Selling Price
-                                            </Form.Label>
-                                            <Col sm="8">
-                                                <Form.Control type="text-area"
-                                                    name='selling_price'
-                                                    id='selling_price'
-                                                    className="form-control"
-                                                    placeholder='selling price'
-                                                    value={sellingRate}
-                                                    onChange={handleSellingRateChange}
-                                                />
-                                            </Col>
-                                        </Form.Group>
                                         <div className='mb-1 justify-content-end' style={{ textalign: 'right' }}>
                                             <button type="submit" className="btn btn-primary" style={{ marginLeft: '69%' }} onClick={handleAddPurchase}>Add</button>&nbsp;&nbsp;&nbsp;
                                             <button type="reset" className="btn btn-primary">Cancel</button>
@@ -402,7 +385,7 @@ const Purchase = ({ showAlert }) => {
             <div className="container">
                 <h4 style={{ marginTop: 10 }}><center> Display Product details</center></h4>
                 <div className='card'>
-                    <div className="card-body" style={{ height: '200px', overflowY: 'scroll' }} >
+                    <div className="card-body" style={{ height: '230px', overflowY: 'scroll' }} >
                         <table className="card-table table">
                             <thead>
                                 <tr>
@@ -435,14 +418,14 @@ const Purchase = ({ showAlert }) => {
                     <div className="card-footer">
                         <div className='container'>
                             <div className="row">
-                                <div className="col-2">
+                                <div className="col-3">
                                     <h5>Total Quantity: {totalQuantity}</h5>
                                 </div>
                                 <div className="col-3">
                                     <h5>Total Amount: {totalAmount} ₹</h5>
                                 </div>
                                 <div className="col">
-                                    <button type="submit" className="btn btn-primary  float-right" style={{ marginLeft: '90%' }} >Submit</button>
+                                    <button type="submit" className="btn btn-primary  float-right" style={{ marginLeft: '90%' }} onClick={handleSubmit}>Submit</button>
                                 </div>
                             </div>
                         </div>
