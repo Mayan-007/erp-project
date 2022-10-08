@@ -1,6 +1,6 @@
-import React from 'react'
+import React,{useState} from 'react'
 import { Col, Row, Form } from "react-bootstrap";
-import Dropdown from 'react-bootstrap/Dropdown';
+// import Dropdown from 'react-bootstrap/Dropdown';
 
 // import Radio from '@mui/material/Radio';
 // import RadioGroup from '@mui/material/RadioGroup';
@@ -10,11 +10,29 @@ import Dropdown from 'react-bootstrap/Dropdown';
 // import { appBarClasses } from '@mui/material';
 const styles = {
     box: {
-        marginTop: '3%',
-    }
+        marginTop: '2%',
+    },
+    rcorners1 :{
+        padding: '0.375rem 0.75rem',
+        fontsize: '1rem',
+        fontweight: '400',
+        lineheight: 1.5,
+        color: '#212529',
+        backgroundcolor: '#fff',
+
+        border: '1px solid #ced4da',
+        appearance: 'none',
+        borderradius: '0.375rem',
+        width:'100%'
+      },
+      grid :{
+        gridcolumngap: '50px',
+      } 
     
 }
+
 const Purchase = () => {
+    const [selects,setSelects]=useState();
     return (
         <div>
             <h2><center>Product Entry</center></h2>
@@ -25,11 +43,11 @@ const Purchase = () => {
 
                             <div className='row'>
                                 <div className='col-md-4'>
-                                    <Form.Group as={Row} className="mb-3">
-                                        <Form.Label column sm="6">
+                                    <Form.Group as={Row} >
+                                        <Form.Label column sm="5">
                                             Wholesaler name
                                         </Form.Label>
-                                        <Dropdown>
+                                        {/* <Dropdown>
       <Dropdown.Toggle variant="secondary" id="dropdown-basic" style={{width:'80%'}}>
         Select
       </Dropdown.Toggle>
@@ -38,24 +56,30 @@ const Purchase = () => {
         <Dropdown.Item href="#/action-2">Shail</Dropdown.Item>
         <Dropdown.Item href="#/action-2">Dhruv</Dropdown.Item>
         <Dropdown.Item href="#/action-3">Kalpit</Dropdown.Item>
+        
       </Dropdown.Menu>
-    </Dropdown>
-                                        {/* <select >
-                                            <option value="shail">shail</option>
-                                            <option value="mayan">mayan</option>
-                                            <option value="dhruv">Dhruv</option>
-                                        </select> */}
-
+      
+    </Dropdown> */}  
+     <Col sm="6">
+                                        <select id="drop" value={selects} 
+              onChange={(e) => setSelects(e.target.value)}
+              style={styles.rcorners1}>
+            
+        <option value="shail">Shail</option>
+        <option value="Mayan">Mayan</option>
+        <option value="kalpit">kalpit</option>
+      </select>
+      </Col>
 
                                     </Form.Group>
                                 </div>
                                 <div className='col-md-8 '>
                                     <div className='row'>
-                                        <div className='col-md-4'>
-                                        <Form.Group as={Row}>
-                                                <Form.Label >
-                                                    Mode
-                                                    </Form.Label>
+                                        <div className='col-md-5'>
+                                        <Form.Group as={Row} className="mb-3">
+                                        <Form.Label column sm="3" htmlFor='mode' style={styles.grid}>
+                                                Mode
+                                            </Form.Label>
                                             {/* <FormLabel id="demo-row-radio-buttons-group-label">Mode</FormLabel> */}
                                             {/* <RadioGroup
                                                 row
@@ -66,6 +90,7 @@ const Purchase = () => {
                                                 <FormControlLabel value="Cheque" control={<Radio />} label="Cheque" />
 
                                             </RadioGroup> */}
+                                              <Col sm="7" style={{padding:'2%'}}>
                                             {[ 'radio'].map((type) => (
                                                 <div key={`inline-${type}`} className="mb-3">
                                                     <Form.Check
@@ -85,10 +110,11 @@ const Purchase = () => {
                                                    
                                                 </div>
                                             ))}
+                                            </Col>
                                         </Form.Group>
                                         </div>
-                                        <div className='col-md-8'>
-                                            <Form.Group as={Row}>
+                                        <div className='col-md-7'>
+                                            {/* <Form.Group as={Row}>
                                                 <Form.Label >
                                                     Cheque number
                                                 </Form.Label>
@@ -97,7 +123,16 @@ const Purchase = () => {
                                                 </Col>
 
 
-                                            </Form.Group>
+                                            </Form.Group> */}
+                                            <Form.Group as={Row} className="mb-3">
+                                            <Form.Label column sm="3" htmlFor='cheque'>
+                                                Cheque no
+                                            </Form.Label>
+                                            <Col sm="9">
+                                                <Form.Control type='text' name='cheque' id='cheque' placeholder="Cheque number"
+                                                />
+                                            </Col>
+                                        </Form.Group>
                                         </div>
                                     </div>
 
@@ -195,9 +230,11 @@ const Purchase = () => {
 
             </div>
             <div className="container">
-                <h2 style={{ marginTop: 10 }}><center> Display Wholesaler details</center></h2>
-                <div className='card' style={{ height: '250px', overflowY: 'scroll' }} >
+                <h4 style={{ marginTop: 10 }}><center> Display Product details</center></h4>
+                <div className='card'  >
 
+                   
+                    <div className="card-body" style={{ height: '150px', overflowY: 'scroll' }} >
                     <table className="card-table table">
                         <thead>
                             <tr>
@@ -213,8 +250,9 @@ const Purchase = () => {
 
                         </tbody>
                     </table>
-                    <button type="submit" className="btn btn-primary" >Submit</button>
-                    <div className="card-body">
+                    </div>
+                    <div className="card-footer">
+                    <button type="submit" className="btn btn-primary  float-right" style={{marginLeft:'90%'}} >Submit</button>
                     </div>
                 </div>
             </div>
