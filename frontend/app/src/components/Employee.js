@@ -215,20 +215,22 @@ const Employee = ({ showAlert }) => {
             </div>
             <div className="container">
                 <h2 style={{ marginTop: 10 }}><center> Display Employees details</center></h2>
-                <div className='card-header'>
-                    <div className='row'>
-                        <div className='col-4 offset-8'>
-                            <input type="text" className="form-control" placeholder="Search by employee name" onChange={handleSearch} />
+                <div className='card'>
+                    <div className='card-header'>
+                        <div className='row'>
+                            <div className='col-4 offset-8'>
+                                <input type="text" className="form-control" placeholder="Search by employee name" onChange={handleSearch} />
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="card-body" style={{ height: '300px', overflowY: 'scroll' }} >
-                    <DataTable
-                        columns={columns}
-                        data={filteredEmployees}
-                        highlightOnHover
-                        pagination
-                    />
+                    <div className="card-body" style={{ height: '300px', overflowY: 'scroll' }} >
+                        <DataTable
+                            columns={columns}
+                            data={filteredEmployees}
+                            highlightOnHover
+                            pagination
+                        />
+                    </div>
                 </div>
             </div>
         </div>

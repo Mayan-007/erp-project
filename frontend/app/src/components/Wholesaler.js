@@ -59,6 +59,8 @@ const Wholesaler = ({ showAlert }) => {
             getAllWholesaler();
         } else if (result.status === 'warning') {
             showAlert(result.message, result.status);
+        } else if (result.status === 'danger') {
+            showAlert(result.errors[0].msg, result.status);
         }
     }
 
