@@ -17,10 +17,6 @@ const ProductSchema = new Schema({
         type: Number,   
         required: [true, 'Size is required']
     },
-    color: {
-        type: String,
-        required: [true, 'Color is required']
-    },
     brand: {
         type: String,
         required: [true, 'Brand is required']
@@ -39,7 +35,7 @@ const ProductSchema = new Schema({
     }}],
     date: {
         type: Date,
-        required: [true, 'Date is required']
+        default: Date.now
     }
 });
 
