@@ -80,6 +80,29 @@ const NavBar = () => {
                         </Link>
                     </div>
                 </div>
+                <div className='row'>
+                    <div className='col'>
+                        <div className='row py-3' type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div className='col-2'>
+                                <i className='bi bi-table'></i>
+                            </div>
+                            <div className='col'>
+                                <h5>Report</h5>
+                            </div>
+                        </div>
+                        <ul className="dropdown-menu">
+                            <li>
+                                <Link className="dropdown-item" to="/purchasereport">Purchase</Link>
+                            </li>
+                            <li>
+                                <Link className="dropdown-item" to="/salesreport">Sales</Link>
+                            </li>
+                            <li>
+                                <Link className="dropdown-item" to="/customerdetails">Customer Details</Link>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     )

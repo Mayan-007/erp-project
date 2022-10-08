@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Purchase from './components/Purchase';
 import Employee from './components/Employee';
@@ -7,6 +7,9 @@ import Wholesaler from './components/Wholesaler';
 import Stock from './components/Stock';
 import NavBar from './components/NavBar';
 import Alert from './components/Alert';
+import PurchaseReport from './components/PurchaseReport';
+import SalesReport from './components/SalesReport';
+import CustomerDetails from './components/CustomerDetails';
 
 
 const App = () => {
@@ -50,19 +53,25 @@ const App = () => {
 							</div>
 						</div>
 						<Alert alert={alert} />
-						<Routes>
-							{/* Route 1: Customer */}
-							<Route exact path="/purchase" element={<Purchase />} />
-							{/* Route 2: Employee */}
-							<Route exact path="/employee" element={<Employee showAlert={showAlert} />} />
-							{/* Route 3: Invoice */}
-							<Route exact path="/invoice" element={<Invoice />} />
-							{/* Route 4: Wholesaler */}
-							<Route exact path="/wholesaler" element={<Wholesaler showAlert={showAlert} />} />
-							{/* Route 5: Stock */}
-							<Route exact path="/stock" element={<Stock />} />
-						</Routes>
-					</div>
+							<Routes>
+								{/* Route 1: Customer */}
+								<Route exact path="/purchase" element={<Purchase showAlert={showAlert} />} />
+								{/* Route 2: Employee */}
+								<Route exact path="/employee" element={<Employee showAlert={showAlert} />} />
+								{/* Route 3: Invoice */}
+								<Route exact path="/invoice" element={<Invoice />} />
+								{/* Route 4: Wholesaler */}
+								<Route exact path="/wholesaler" element={<Wholesaler showAlert={showAlert} />} />
+								{/* Route 5: Stock */}
+								<Route exact path="/stock" element={<Stock />} />
+								{/* Route 6: Purchase Report */}
+								<Route exact path="/purchasereport" element={<PurchaseReport />} />
+								{/* Route 7: Sales Report */}
+								<Route exact path="/salesreport" element={<SalesReport />} />
+								{/* Route 8: Customer Details */}
+								<Route exact path="/customerdetails" element={<CustomerDetails />} />
+							</Routes>
+						</div>
 				</div>
 			</div>
 		</BrowserRouter>
