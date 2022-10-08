@@ -11,10 +11,7 @@ const Stock = require('../models/Stock');
 // @desc    Add a  to the purchase database
 router.post('/addpurchase',[
     body('wholesaler_id', 'Please enter a valid wholesaler id').isString(),
-    body('purchase_date', 'Please enter a valid date').isDate(),
     body('purchase_amount', 'Please enter a valid amount').isNumeric(),
-    // body('cheque_no', 'Please enter a valid cheque no of length 6'),
-    // body('cheque_date', 'Please enter a valid cheque date').isDate(),
     body('products', 'Please enter a valid product').isArray(),
     body('payment_mode', 'Please enter a valid payment mode').isString(),
 ],  async (req, res) => {
@@ -22,7 +19,6 @@ router.post('/addpurchase',[
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
-
     try{ 
         let purchase = await Wholesaler.findOne({wholesaler_id: req.body.wholesaler_id });
     	if (!purchase) {
@@ -34,7 +30,6 @@ router.post('/addpurchase',[
     	}
         purchase = new Purchase({
             wholesaler_id: req.body.wholesaler_id,
-            date: req.body.purchase_date,
             amount: req.body.purchase_amount,
             cheque_no: req.body.cheque_no,
             cheque_date: req.body.cheque_date,
@@ -52,8 +47,6 @@ router.post('/addpurchase',[
             purchase_id: response.data._id,
             date: req.body.purchase_date,
             products: req.body.products
-            
-
         });
         product.save();
         console.log(product);
