@@ -84,6 +84,20 @@ const Invoice = () => {
                                             />
                                         </Col>
                                     </Form.Group>
+                                    <Form.Group as={Row} className="mb-3" >
+                                        <Form.Label column md="2" htmlFor='selling_price'>
+                                            Selling price
+                                        </Form.Label>
+                                        <Col md="10">
+                                            <Form.Control type="text"
+                                                name='selling_price'
+                                                id='selling_price'
+                                                className="form-control"
+                                                placeholder='selling price'
+                                              
+                                            />
+                                        </Col>
+                                    </Form.Group>
 
                                     <div className='mb-1 justify-content-end' style={{ textalign: 'right' }}>
                                         <button type="submit" className="btn btn-primary" style={{ marginLeft: '69%' }}>Add</button>&nbsp;&nbsp;&nbsp;
