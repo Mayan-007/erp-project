@@ -1,10 +1,17 @@
 import React from 'react'
 import { Col, Row, Form } from "react-bootstrap";
+const styles = {
+    box: {
+        marginTop: '2%',
+    }
+
+}
 const Invoice = () => {
     return (
         <div>
-            <div className="container">
-                <h2><center>Generate Invoice</center></h2>
+            <h2><center>Generate Invoice</center></h2>
+            {/* <div className="container">
+                
                 <div className='card'>
                     <div className="card-body">
                         <form >
@@ -108,7 +115,138 @@ const Invoice = () => {
                         </form>
                     </div>
                 </div>
-                </div>
+                </div> */}
+                 <div className='container'>
+                <Form>
+                    <div className='card'>
+                        <div className='card-body' style={{ height: '70px' }}>
+                            <div className='row'>
+                                <div className='col-md-6'>
+                                <Form.Group as={Row} className="mb-3">
+                                            <Form.Label column sm="3" htmlFor='customer_number'>
+                                                Customer name
+                                            </Form.Label>
+                                            <Col sm="8">
+                                                <Form.Control
+                                                    type='text'
+                                                    name='customer_name'
+                                                    id='customer_name'
+                                                    placeholder="Customer namer"
+                                                   
+                                                />
+                                            </Col>
+                                        </Form.Group>   
+                                </div>
+                                <div className='col-md-6'>
+                                <Form.Group as={Row} className="mb-3">
+                                            <Form.Label column sm="3" htmlFor='phone_no'>
+                                                Phone number
+                                            </Form.Label>
+                                            <Col sm="8">
+                                                <Form.Control
+                                                    type='text'
+                                                    name='phone_no'
+                                                    id='phone_no'
+                                                    placeholder="phone number"
+                                                    
+                                                />
+                                            </Col>
+                                        </Form.Group>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className='box'style={styles.box} >
+                        <div className='card' >
+                            <div className='card-body'>
+                                <div className='row'>
+                                    <div className='col-md-6'>
+                                        <Form.Group as={Row} className="mb-3">
+                                            <Form.Label column sm="2" htmlFor='brand'>
+                                                Brand
+                                            </Form.Label>
+                                            <Col sm="10">
+                                                <Form.Control
+                                                    type='text'
+                                                    name='brand'
+                                                    id='brand'
+                                                    placeholder="Brand name"
+                                                    
+                                                />
+                                            </Col>
+                                        </Form.Group>
+
+                                        <Form.Group as={Row} className="mb-3" >
+                                            <Form.Label column sm="2" htmlFor='size'>
+                                                Size
+                                            </Form.Label>
+                                            <Col sm="10">
+                                                <Form.Control
+                                                    type="number"
+                                                    name='size'
+                                                    id='size'
+                                                    placeholder="Size"
+                                                   
+                                                />
+                                            </Col>
+                                        </Form.Group>
+                                        <Form.Group as={Row} className="mb-3" >
+                                            <Form.Label column sm="2" htmlFor='quantity'>
+                                                Quantity
+                                            </Form.Label>
+                                            <Col sm="10">
+                                                <Form.Control
+                                                    type="number"
+                                                    name='quantity'
+                                                    id='quantity'
+                                                    className="form-control"
+                                                    placeholder='Quantity'
+                                                  
+                                                />
+                                            </Col>
+                                        </Form.Group>
+                                    </div>
+                                    <div className='col-md-6'>
+                                        <Form.Group as={Row} className="mb-3">
+                                            <Form.Label column sm="3" htmlFor='article_number'>
+                                                Article number
+                                            </Form.Label>
+                                            <Col sm="8">
+                                                <Form.Control
+                                                    type='text'
+                                                    name='article_number'
+                                                    id='article_number'
+                                                    placeholder="article number"
+                                                   
+                                                />
+                                            </Col>
+                                        </Form.Group>
+
+                                        <Form.Group as={Row} className="mb-4" >
+                                            <Form.Label column sm="3" htmlFor='selling_price'>
+                                                Selling Price
+                                            </Form.Label>
+                                            <Col sm="8">
+                                                <Form.Control
+                                                    type="text"
+                                                    name='selling_price'
+                                                    id='selling_price'
+                                                    placeholder="selling price"
+                                                  
+                                                />
+                                            </Col>
+                                        </Form.Group>
+                                        <div className='mb-1 justify-content-end' style={{ textalign: 'right' }}>
+                                            <button type="submit" className="btn btn-primary" style={{ marginLeft: '69%' }} >Add</button>&nbsp;&nbsp;&nbsp;
+                                            <button type="reset" className="btn btn-primary">Cancel</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </Form>
+            </div>
                 <div className="container">
                 <h4 style={{ marginTop: 10 }}><center> Display Product details</center></h4>
                 <div className='card'>
@@ -119,6 +257,8 @@ const Invoice = () => {
                                     <th scope="col">Article number</th>
                                     <th scope="col">Brand</th>
                                     <th scope="col">Size</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Selling price</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
