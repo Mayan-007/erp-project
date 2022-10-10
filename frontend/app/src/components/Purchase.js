@@ -108,8 +108,20 @@ const Purchase = ({ showAlert }) => {
 
     const handleAddPurchase = (e) => {
         e.preventDefault();
-        if (brand === '' || size === '' || quantity === '' || purchaseRate === '' || articleNo === '') {
-            showAlert('Please fill all the fields', 'danger');
+        if (brand === '' || size <= 0 || quantity <= 0 || purchaseRate === '' || articleNo === '') {
+            if(brand === ''){
+                showAlert('Please enter brand', 'danger');
+            }else if(size <= 0){
+                showAlert('Please enter valid size', 'danger');
+            }else if(quantity <= 0){
+                showAlert('Please enter valid quantity', 'danger');
+            }
+            else if(purchaseRate === ''){
+                showAlert('Please enter purchase rate', 'danger');
+            }
+            else if(articleNo === ''){
+                showAlert('Please enter article no', 'danger');
+            }
         } else {
             console.log(totalAmount);
             // data stored to session
@@ -190,6 +202,15 @@ const Purchase = ({ showAlert }) => {
         purchase.splice(index, 1);
         sessionStorage.setItem('purchase', JSON.stringify(purchase));
         handleTempDetailsList();
+    }
+
+    const handleClear = (e) => {
+        e.preventDefault();
+        setArticleNo('');
+        setBrand('');
+        setPurchaseRate('');
+        setQuantity('');
+        setSize('');
     }
 
     return (
@@ -373,7 +394,7 @@ const Purchase = ({ showAlert }) => {
                                         </Form.Group>
                                         <div className='mb-1 justify-content-end' style={{ textalign: 'right' }}>
                                             <button type="submit" className="btn btn-primary" style={{ marginLeft: '69%' }} onClick={handleAddPurchase}>Add</button>&nbsp;&nbsp;&nbsp;
-                                            <button type="reset" className="btn btn-primary">Cancel</button>
+                                            <button className="btn btn-primary" onClick={handleClear}>Cancel</button>
                                         </div>
                                     </div>
                                 </div>
