@@ -123,8 +123,6 @@ const Purchase = ({ showAlert }) => {
                 showAlert('Please enter article no', 'danger');
             }
         } else {
-            console.log(totalAmount);
-            // data stored to session
             if (sessionStorage.getItem('purchase') === null) {
                 sessionStorage.setItem('purchase', JSON.stringify([]));
             }
@@ -134,7 +132,7 @@ const Purchase = ({ showAlert }) => {
                 size: size,
                 brand: brand,
                 purchase_rate: purchaseRate,
-                purchase_quantity: quantity
+                purchase_quantity: parseInt(quantity),
             });
             sessionStorage.setItem('purchase', JSON.stringify(purchase));
             handleTempDetailsList();
