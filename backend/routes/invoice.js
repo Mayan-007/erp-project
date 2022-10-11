@@ -81,5 +81,55 @@ router.post('/addinvoice',[
     }
 });
 
+//get all invoices
+router.get('/fetchall', async (req, res) => {
+    try {
+        let invoice = await Invoice.find();
+        if (!invoice) {
+            let response = {
+                "status": "warning",
+                "message": "no invoice found"
+            }
+            return res.status(400).json(response);
+        }
+        else {
+            let response = {
+                "status": "success",
+                "message": "invoice found",
+                "invoice": invoice
+            }
+            return res.status(200).json(response);
+        }
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+// get all invoices with customer name and contact number
+router.get('/fetchallwithcustomer', async (req, res) => {
+    try {
+        let invoice = await Invoice.find().populate('customer_id');
+        if (!invoice) {
+            let response = {
+                "status": "warning",
+                "message": "no invoice found"
+            }
+            return res.status(400).json(response);
+        }
+        else {
+            let response = {
+                "status": "success",
+                "message": "invoice found",
+                "invoice": invoice
+            }
+            return res.status(200).json(response);
+        }
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
 
 module.exports = router;
