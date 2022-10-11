@@ -5,7 +5,7 @@ const PurchaseReport = () => {
     return (
         <div>
             <div className="container">
-                <h2 style={{ marginTop: 10 }}><center> Purchase product record</center></h2>
+                <h2 style={{ marginTop: 10 }}><center> Purchase record</center></h2>
                 <div className='card'>
                     <div className='card-header'>
                         <div className='row'>
