@@ -4,7 +4,7 @@ const { body, validationResult } = require('express-validator');
 const Stock = require('../models/Stock');
 
 //check stock availability
-router.get('/check', [
+router.post('/check', [
     body('article_no', 'Please enter a valid article no').isString(),
     body('size', 'Please enter a valid size').isNumeric(),
     body('brand', 'Please enter a valid brand').isString(),
@@ -21,7 +21,7 @@ router.get('/check', [
                 "status": "warning",
                 "message": "product does not exist"
             }
-            return res.status(400).json(response);
+            return res.status(200).json(response);
         }
         else if(stock.quantity >= req.body.quantity){
             let response = {
@@ -35,7 +35,7 @@ router.get('/check', [
                 "status": "warning",
                 "message": "only "+stock.quantity+" units are available"
             }
-            return res.status(400).json(response);
+            return res.status(200).json(response);
         }
     } catch (err) {
         console.error(err.message);

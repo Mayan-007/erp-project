@@ -32,7 +32,7 @@ const InvoiceSchema = new Schema({
     },
     date: {
         type: Date,
-        required: [true, 'Date is required']
+        default: Date.now
     },
     amount: {
         type: Number,
