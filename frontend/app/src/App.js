@@ -10,6 +10,7 @@ import Alert from './components/Alert';
 import PurchaseReport from './components/PurchaseReport';
 import SalesReport from './components/SalesReport';
 import CustomerDetails from './components/CustomerDetails';
+import Home from './components/Home';
 
 
 const App = () => {
@@ -54,6 +55,8 @@ const App = () => {
 						</div>
 						<Alert alert={alert} />
 							<Routes>
+								{/* Route 0: landing Page */}
+								<Route path='/' element={<Home />} />
 								{/* Route 1: Customer */}
 								<Route exact path="/purchase" element={<Purchase showAlert={showAlert} />} />
 								{/* Route 2: Employee */}
