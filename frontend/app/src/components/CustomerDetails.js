@@ -4,7 +4,7 @@ const CustomerDetails = () => {
     return (
         <div>
             <div className="container">
-                <h2 style={{ marginTop: 10 }}><center> Sales report </center></h2>
+                <h2 style={{ marginTop: 10 }}><center> Customer details</center></h2>
                 <div className='card'>
                     <div className='card-header'>
                         <div className='row'>
