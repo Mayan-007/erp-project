@@ -14,7 +14,7 @@ const PurchaseReport = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="card-body" style={{  overflowY: 'scroll' }} >
+                    <div className="card-body" style={{ height:'500px', overflowY: 'scroll' }} >
                         {/* <DataTable
                             columns={columns}
                             data={filteredWholesaler}
