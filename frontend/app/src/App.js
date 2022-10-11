@@ -41,13 +41,13 @@ const App = () => {
 							<div className='col-2'>
 								<div className='row d-flex justify-content-end'>
 									<div className='col-3'>
-										<i className="bi bi-person-circle fs-1" type="button"
+										{/* <i className="bi bi-person-circle fs-1" type="button"
 											data-bs-toggle="dropdown" aria-expanded="false"></i>
 										<ul className="dropdown-menu">
 											<li>
 												<Link className="dropdown-item" to="/">Logout</Link>
 											</li>
-										</ul>
+										</ul> */}
 									</div>
 								</div>
 							</div>
