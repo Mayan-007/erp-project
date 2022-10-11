@@ -26,7 +26,7 @@ const Model1 = () => {
                         <div className='container'>
                             <div className="row">
                                 <div className="col">
-                                    <button type="submit" className="btn btn-primary  float-right" style={{ marginLeft: '90%' }} >Submit</button>
+                                    <button type="submit" className="btn btn-primary  float-right" style={{ marginLeft: '90%' }} >Close</button>
                                 </div>
                             </div>
                         </div>
