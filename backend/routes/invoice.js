@@ -8,10 +8,7 @@ const Stock = require('../models/Stock');
 
 // @route   POST api/invoice/addinvoice
 // @desc    Add a  to the invoice database
-router.post('/addinvoice',[
-    body('customer_id', 'Please enter a valid customer id').isString(),
-    body('products', 'Please enter a valid product').isArray()
-],  async (req, res) => {
+router.post('/addinvoice', async (req, res) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
@@ -35,9 +32,8 @@ router.post('/addinvoice',[
                 let response = {
                     "status": "warning",
                     "message": "product does not exist"
-                    
                 }
-                return res.status(400).json(response);
+                return res.status(200).json(response);
             }
             if(stock.quantity == req.body.products[i].quantity){
                 amount = amount + (req.body.products[i].rate * req.body.products[i].quantity);
@@ -56,13 +52,12 @@ router.post('/addinvoice',[
                     "status": "warning",
                     "message": "quantity is more than stock"
                 }
-                return res.status(400).json(response);
+                return res.status(200).json(response);
             }   
         }
 
         invoice = new Invoice({
             customer_id: req.body.customer_id,
-            date: req.body.invoice_date,
             amount: amount,
             products: req.body.products
             

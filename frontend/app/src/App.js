@@ -12,7 +12,6 @@ import SalesReport from './components/SalesReport';
 import CustomerDetails from './components/CustomerDetails';
 import Home from './components/Home';
 
-
 const App = () => {
 
 	const showAlert = (message, type) => {
@@ -62,7 +61,7 @@ const App = () => {
 								{/* Route 2: Employee */}
 								<Route exact path="/employee" element={<Employee showAlert={showAlert} />} />
 								{/* Route 3: Invoice */}
-								<Route exact path="/invoice" element={<Invoice />} />
+								<Route exact path="/invoice" element={<Invoice showAlert={showAlert} />} />
 								{/* Route 4: Wholesaler */}
 								<Route exact path="/wholesaler" element={<Wholesaler showAlert={showAlert} />} />
 								{/* Route 5: Stock */}
