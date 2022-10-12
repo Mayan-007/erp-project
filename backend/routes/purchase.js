@@ -100,4 +100,25 @@ router.get('/getallpurchase', async (req, res) => {
     }
 });
 
+router.get('/todaytotal', async (req, res) => {
+    try {
+        let purchase = await Purchase.find({date: {$gte: new Date(new Date().setHours(0,0,0,0))}});
+        let total = 0;
+        for(let i=0;i<purchase.length;i++){
+            total = total + purchase[i].amount;
+        }
+        let response = {
+            "status": "success",
+            "message": "Total purchase amount fetched successfully",
+            "data": total
+        }
+        res.send(response);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+
+
 module.exports = router;
