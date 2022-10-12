@@ -125,5 +125,35 @@ router.get('/fetchallwithcustomer', async (req, res) => {
     }
 });
 
+//get today total sales amount
+router.get('/todaytotal', async (req, res) => {
+    try {
+        let invoice = await Invoice.find({createdAt: {$gte: new Date(new Date().setHours(0,0,0,0))}});
+        if (!invoice) {
+            let response = {
+                "status": "warning",
+                "message": "no invoice found"
+            }
+            return res.status(400).json(response);
+        }
+        else {
+            let total = 0;
+            for(let i=0;i<invoice.length;i++){
+                total = total + invoice[i].amount;
+            }
+            let response = {
+                "status": "success",
+                "message": "invoice found",
+                "total": total
+            }
+            return res.status(200).json(response);
+        }
+    } catch (err) {
+        console.error(err.message);
+        res.status(500).send('Server Error');
+    }
+});
+
+
 
 module.exports = router;
