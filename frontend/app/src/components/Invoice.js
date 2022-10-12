@@ -72,7 +72,7 @@ const Invoice = ({ showAlert }) => {
         setRate(e.target.value);
     }
 
-    const handlePrint = () => {
+    const handlePrint = async () => {
         if (phone === '') {
             showAlert('Please enter phone number', 'danger');
         } else if (name === '') {
@@ -80,19 +80,20 @@ const Invoice = ({ showAlert }) => {
         }
         let customer = customers.find(c => c.mobile.toString() === phone.toString());
         if (!customer) {
-            fetch('http://localhost:4000/api/customer/addcustomer', {
+            await fetch('http://localhost:4000/api/customer/addcustomer', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
-                    name: name,
-                    mobile: phone
+                    customer_name: name,
+                    customer_phone: phone
                 })
             })
                 .then(res => res.json())
                 .then(data => {
                     customer = data.data;
+                    console.log(customer);
                 })
         }
         let sell = JSON.parse(sessionStorage.getItem('sell'));
@@ -102,7 +103,7 @@ const Invoice = ({ showAlert }) => {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                customer: customer._id,
+                customer_id: customer._id,
                 products: sell
             })
         })

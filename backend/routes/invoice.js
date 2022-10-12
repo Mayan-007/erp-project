@@ -13,7 +13,6 @@ router.post('/addinvoice', async (req, res) => {
     if (!errors.isEmpty()) {
         return res.status(400).json({ errors: errors.array() });
     }
-    
     try{
         let invoice = await Customer.findOne({customer_id: req.body.customer_id });
     	if (!invoice) {
