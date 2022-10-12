@@ -87,7 +87,7 @@ router.post('/addpurchase',[
 // @desc    Get all purchase from the database
 router.get('/getallpurchase', async (req, res) => {
     try{
-        let purchase = await Purchase.find();
+        let purchase = await Purchase.find().populate('wholesaler_id');
         let response = {
             "status": "success",
             "message": "All purchase records fetched successfully",
