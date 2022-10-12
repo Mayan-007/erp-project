@@ -154,6 +154,25 @@ router.get('/todaytotal', async (req, res) => {
     }
 });
 
+//get total sales amount of current month
+router.get('/getsalesamountbymonth', async (req, res) => {
+    try {
+        let invoice = await Invoice.find({date: {$gte: new Date(new Date().setDate(1))}});
+        let total = 0;
+        for(let i=0;i<invoice.length;i++){
+            total = total + invoice[i].amount;
+        }
+        let response = {
+            "status": "success",
+            "message": "Total sales amount fetched successfully",
+            "data": total
+        }
+        res.send(response);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send('Internal Server Error');
+    }
+});
 
 
 module.exports = router;
