@@ -1,48 +1,58 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 
 const Stock = () => {
 
-    return (
+    const [stocks, setStocks] = React.useState([])
 
+    useEffect(() => {
+        fetch('http://localhost:4000/api/stock/fetchall')
+            .then(response => response.json())
+            .then(data => setStocks(data.data))
+    }, [])
+
+    const [search, setSearch] = useState('')
+
+    const handleSearch = (e) => {
+        setSearch(e.target.value)
+    }
+
+    const filteredStocks = stocks.filter(stock => {
+        return stock.article_no.toLowerCase().includes(search.toLowerCase())
+    })
+
+    return (
         <div>
-    <div className="container">
+            <div className="container">
                 <h2 style={{ marginTop: 10 }}><center> Stock display</center></h2>
                 <div className='card'>
                     <div className='card-header'>
                         <div className='row'>
                             <div className='col-4 offset-8'>
-                                <input type="text" className="form-control" placeholder="Search" />
+                                <input type="text" className="form-control" placeholder="Search" onChange={handleSearch} />
                             </div>
                         </div>
                     </div>
-                    <div className="card-body" style={{ height:'500px', overflowY: 'scroll' }} >
-                        {/* <DataTable
-                            columns={columns}
-                            data={filteredWholesaler}
-                            highlightOnHover
-                            pagination
-                            pointerOnHover
-                        /> */}
+                    <div className="card-body" style={{ height: '500px', overflowY: 'scroll' }} >
                         <table className="card-table table">
                             <thead>
                                 <tr>
-                            
-                                    <th scope="col">Article number</th>
-                                    <th scope="col">Brand</th>
-                                    <th scope="col">Size</th>
-                                    <th scope="col">Quantity</th>
+                                    <th className='text-center' scope="col">Brand</th>
+                                    <th className='text-center' scope="col">Article number</th>
+                                    <th className='text-center' scope="col">Size</th>
+                                    <th className='text-center' scope="col">Quantity</th>
                                 </tr>
-                               
                             </thead>
                             <tbody>
-                            <tr>
-                                    <td>keugw</td>
-                                    <td>ewuw </td>
-                                    <td>eiwhuh</td>
-                                    <td>weuu</td>
-                                    
-                               
-                                </tr>
+                                {filteredStocks && filteredStocks.map((stock, index) => {
+                                    return (
+                                        <tr key={index}>
+                                            <td className='text-center'>{stock.brand}</td>
+                                            <td className='text-center'>{stock.article_no}</td>
+                                            <td className='text-center'>{stock.size}</td>
+                                            <td className='text-center'>{stock.quantity}</td>
+                                        </tr>
+                                    )
+                                })}
                             </tbody>
                         </table>
                     </div>
