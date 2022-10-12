@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-// import Modal1 from './modal'
 import { Modal, Button } from 'react-bootstrap';
 
 const SalesReport = () => {
