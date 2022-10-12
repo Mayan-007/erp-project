@@ -119,6 +119,27 @@ router.get('/todaytotal', async (req, res) => {
     }
 });
 
+//get purchase amount by current month
+router.get('/getpurchaseamountbymonth', async (req, res) => {
+    try {
+        let purchase = await Purchase.find({date: {$gte: new Date(new Date().setDate(1))}});
+        let total = 0;
+        for(let i=0;i<purchase.length;i++){
+            total = total + purchase[i].amount;
+        }
+        let response = {
+            "status": "success",
+            "message": "Total purchase amount fetched successfully",
+            "data": total
+        }
+        res.send(response);
+    } catch (error) {
+        console.error(error.message);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
+
 
 
 module.exports = router;
