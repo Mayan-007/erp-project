@@ -38,16 +38,16 @@ const Home = () => {
             <div className='container' >
                 <div className='row'>
                     <div className='col-md-6'>
-                        <div className='card' style={{ marginTop: '5%', height: '271px' }}>
-                            <div className='card-header' >
+                        <div className='card shadow' style={{ marginTop: '5%', height: '271px' }}>
+                            <div className='card-header bg-black text-white'>
                                 <h3><center>Monthly sales</center></h3>
                             </div>
                             <div className='card-body d-flex align-items-center justify-content-center'>
                                 <h1><center>{monthlySales} ₹</center></h1>
                             </div>
                         </div>
-                        <div className='card' style={{ marginTop: '5%', height: '271px' }}>
-                            <div className='card-header' >
+                        <div className='card shadow' style={{ marginTop: '5%', height: '271px' }}>
+                            <div className='card-header bg-black text-white'>
                                 <h3><center>Daily sales</center></h3>
                             </div>
                             <div className='card-body d-flex align-items-center justify-content-center'>
@@ -56,16 +56,16 @@ const Home = () => {
                         </div>
                     </div>
                     <div className='col-md-6'>
-                        <div className='card' style={{ marginTop: '5%', height: '271px' }}>
-                            <div className='card-header' >
+                        <div className='card shadow' style={{ marginTop: '5%', height: '271px' }}>
+                            <div className='card-header bg-black text-white'>
                                 <h3><center>Monthly purchase</center></h3>
                             </div>
                             <div className='card-body d-flex align-items-center justify-content-center'>
                                 <h1><center>{monthlyPurchase} ₹</center></h1>
                             </div>
                         </div>
-                        <div className='card' style={{ marginTop: '5%', height: '271px' }}>
-                            <div className='card-header' >
+                        <div className='card shadow' style={{ marginTop: '5%', height: '271px' }}>
+                            <div className='card-header bg-black text-white'>
                                 <h3><center>Daily purchase</center></h3>
                             </div>
                             <div className='card-body d-flex align-items-center justify-content-center'>
