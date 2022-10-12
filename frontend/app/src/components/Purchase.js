@@ -225,7 +225,7 @@ const Purchase = ({ showAlert }) => {
                                             Wholesaler name
                                         </Form.Label>
                                         <Col sm="6">
-                                            <select id="drop" value={wholesalerId}
+                                            <select id="drop" value={wholesalerId} className='form-select'
                                                 onChange={handleWholesalerIdChange}
                                                 style={styles.rcorners1}>
                                                 <option value="0">Select</option>
