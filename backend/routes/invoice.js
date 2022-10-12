@@ -128,7 +128,7 @@ router.get('/fetchallwithcustomer', async (req, res) => {
 //get today total sales amount
 router.get('/todaytotal', async (req, res) => {
     try {
-        let invoice = await Invoice.find({createdAt: {$gte: new Date(new Date().setHours(0,0,0,0))}});
+        let invoice = await Invoice.find({date: {$gte: new Date(new Date().setHours(0,0,0,0))}});
         if (!invoice) {
             let response = {
                 "status": "warning",
