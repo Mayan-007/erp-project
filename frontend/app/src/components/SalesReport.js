@@ -54,7 +54,7 @@ const SalesReport = () => {
                                         <th scope="col">Date</th>
                                         <th scope="col">Customer name</th>
                                         <th scope="col">Mobile</th>
-                                        <th scope="col">Amount</th>
+                                        <th scope="col">Net Amount</th>
                                         <th scope="col">Show</th>
                                     </tr>
                                 </thead>

@@ -398,8 +398,24 @@ const Invoice = ({ showAlert }) => {
                                 <div className="col-3">
                                     <h5>Total Amount: {totalAmount} ₹</h5>
                                 </div>
+                                <div className="col-3">
+                                <Form.Group as={Row} className="mb-5">
+                                <Form.Label column sm="4" htmlFor='discount_amount' style={{padding:'0px'}}>
+                                                <h5>Discount </h5>
+                                            </Form.Label>
+                                        <Col sm="7" style={{padding:'0px'}}>
+                                            <Form.Control
+                                                type='text'
+                                                name='discount'
+                                                id='discount'
+                                                placeholder="Discount amount"
+                                               
+                                            />
+                                        </Col>
+                                    </Form.Group>
+                                </div>
                                 <div className="col">
-                                    <button className="btn btn-primary  float-right" style={{ marginLeft: '90%' }} onClick={handlePrint}>Print</button>
+                                    <button className="btn btn-primary  float-right" style={{ marginLeft: '69%' }} onClick={handlePrint}>Print</button>
                                 </div>
                             </div>
                         </div>
