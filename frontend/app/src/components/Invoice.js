@@ -40,7 +40,7 @@ const Invoice = ({ showAlert }) => {
             body: body,
             startY: 200,
             head: [['SR.No', 'Product Name', 'Quantity', 'Unit price', 'Amount']],
-            foot: [[' ', 'Net Amount *inclusive of all taxes', totalAmount-discount, '  ']],
+            foot: [[' ', 'Discount:',' ', ' ', discount],[' ', 'Net Amount *inclusive of all taxes', ' ', '  ',totalAmount-discount]],
             headStyles: { textColor: [255, 255, 255], },
             footStyles: { textColor: [255, 255, 255], },
 
